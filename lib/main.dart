@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_tutorial/blocs/counter_cubit.dart';
 import 'package:flutter_tutorial/ui/counter/counter_page.dart';
 import 'package:flutter_tutorial/ui/food/category_page.dart';
 import 'package:flutter_tutorial/ui/food/detail_food_page.dart';
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         initialRoute: '/',
         routes: {
-          CounterPage.routeName: (context) => CounterPage(),
+          CounterPage.routeName: (context) => BlocProvider<CounterCubit>(
+                create: (context) => CounterCubit(),
+                child: CounterPage(),
+              ),
           CategoriesPage.routeName: (context) => const CategoriesPage(),
           FoodsPage.routeName: (context) => const FoodsPage(),
           DetailFoodPage.routeName: (context) => const DetailFoodPage(),

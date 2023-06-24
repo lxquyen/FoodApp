@@ -5,6 +5,8 @@ class CounterCubit extends Cubit<int> {
 
   void increment() => emit(state + 1);
 
+  void decrement() => emit(state - 1);
+
   @override
   void onChange(Change<int> change) {
     super.onChange(change);
