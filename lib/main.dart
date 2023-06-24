@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tutorial/blocs/counter_cubit.dart';
-import 'package:flutter_tutorial/ui/counter/counter_page.dart';
+import 'package:flutter_tutorial/repository/comment_repository.dart';
+import 'package:flutter_tutorial/ui/comments/cubit/comment_cubit.dart';
+import 'package:flutter_tutorial/ui/comments/views/comments_page.dart';
+import 'package:flutter_tutorial/ui/counter/cubit/counter_cubit.dart';
+import 'package:flutter_tutorial/ui/counter/views/counter_page.dart';
 import 'package:flutter_tutorial/ui/food/category_page.dart';
 import 'package:flutter_tutorial/ui/food/detail_food_page.dart';
 import 'package:flutter_tutorial/ui/food/foods_page.dart';
@@ -27,6 +30,10 @@ class MyApp extends StatelessWidget {
           CategoriesPage.routeName: (context) => const CategoriesPage(),
           FoodsPage.routeName: (context) => const FoodsPage(),
           DetailFoodPage.routeName: (context) => const DetailFoodPage(),
+          CommentsPage.routeName: (context) => BlocProvider<CommentCubit>(
+                create: (context) => CommentCubit(CommentRepository()),
+                child: CommentsPage(),
+              ),
         },
         theme: ThemeData(
           primarySwatch: Colors.cyan,
@@ -70,6 +77,14 @@ class HomePage extends StatelessWidget {
                 },
                 child: const Text(
                   'Counter App',
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                )),
+            TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, CommentsPage.routeName);
+                },
+                child: const Text(
+                  'Comments App',
                   style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
                 ))
           ],
