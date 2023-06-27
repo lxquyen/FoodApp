@@ -8,6 +8,8 @@ import 'package:flutter_tutorial/ui/counter/views/counter_page.dart';
 import 'package:flutter_tutorial/ui/food/category_page.dart';
 import 'package:flutter_tutorial/ui/food/detail_food_page.dart';
 import 'package:flutter_tutorial/ui/food/foods_page.dart';
+import 'package:flutter_tutorial/ui/travel_app/nav_pages/main_page.dart';
+import 'package:flutter_tutorial/ui/travel_app/pages/detail_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: 'Flutter Demo',
         initialRoute: '/',
+        debugShowCheckedModeBanner: false,
         routes: {
           CounterPage.routeName: (context) => BlocProvider<CounterCubit>(
                 create: (context) => CounterCubit(),
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
           //     bodySmall: const TextStyle(color: Color.fromARGB(20, 52, 52, 1)),
           //     titleMedium: const TextStyle(fontSize: 20, fontFamily: 'Sunshiney', color: Colors.white)),
         ),
-        home: const HomePage());
+        home: DetailPage());
   }
 }
 
