@@ -8,6 +8,8 @@ import 'package:flutter_tutorial/ui/counter/views/counter_page.dart';
 import 'package:flutter_tutorial/ui/food/category_page.dart';
 import 'package:flutter_tutorial/ui/food/detail_food_page.dart';
 import 'package:flutter_tutorial/ui/food/foods_page.dart';
+import 'package:flutter_tutorial/ui/travel_app/cubit/app_cubit_logics.dart';
+import 'package:flutter_tutorial/ui/travel_app/cubit/app_cubits.dart';
 import 'package:flutter_tutorial/ui/travel_app/nav_pages/main_page.dart';
 import 'package:flutter_tutorial/ui/travel_app/pages/detail_page.dart';
 
@@ -46,7 +48,10 @@ class MyApp extends StatelessWidget {
           //     bodySmall: const TextStyle(color: Color.fromARGB(20, 52, 52, 1)),
           //     titleMedium: const TextStyle(fontSize: 20, fontFamily: 'Sunshiney', color: Colors.white)),
         ),
-        home: DetailPage());
+        home: BlocProvider<AppCubits> (
+          create: (_) => AppCubits(),
+          child: AppCubitLogics(),
+        ));
   }
 }
 
